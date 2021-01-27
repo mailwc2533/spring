@@ -1,5 +1,7 @@
 package cn.atlwc.source.entity;
 
+import org.springframework.context.annotation.Scope;
+
 /**
  * @author LWC
  * @date 2021/1/7 10:49 上午
@@ -7,6 +9,9 @@ package cn.atlwc.source.entity;
 public class SysUser {
 	private String username;
 	private String password;
+
+	public SysUser() {
+	}
 
 	public SysUser(String username, String password) {
 		this.username = username;

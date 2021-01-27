@@ -72,6 +72,17 @@ class ConditionEvaluator {
 	}
 
 	/**
+	 *
+	 * /@ConditionalOnBean 在存在某个bean的时候
+	 * /@ConditionalOnMissingBean 不存在某个bean的时候
+	 * /@ConditionalOnClass 当前classpath可以找到某个类型的类时
+	 * /@ConditionalOnMissingClass 当前classpath不可以找到某个类型的类时
+	 * /@ConditionalOnResource 当前classpath是否存在某个资源文件
+	 * /@ConditionalOnProperty 当前jvm是否包含某个系统属性为某个值
+	 * /@ConditionalOnWebApplication 当前spring context是否是web应用程序
+	 *
+	 * 跳过带有非@Conditional 的类
+	 * 对@Conditional相关注解进行判断
 	 * Determine if an item should be skipped based on {@code @Conditional} annotations.
 	 * @param metadata the meta data
 	 * @param phase the phase of the call
@@ -105,6 +116,7 @@ class ConditionEvaluator {
 			if (condition instanceof ConfigurationCondition) {
 				requiredPhase = ((ConfigurationCondition) condition).getConfigurationPhase();
 			}
+			// 不符合条件
 			if ((requiredPhase == null || requiredPhase == phase) && !condition.matches(this.context, metadata)) {
 				return true;
 			}

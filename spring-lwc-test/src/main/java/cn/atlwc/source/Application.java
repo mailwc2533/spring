@@ -4,6 +4,7 @@ import cn.atlwc.source.config.SysConfig;
 import cn.atlwc.source.entity.SysUser;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * @author LWC
@@ -12,7 +13,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Application {
 
 	public static void main(String[] args) {
-		ApplicationContext ac = new AnnotationConfigApplicationContext(SysConfig.class);
+		ApplicationContext ac = new ClassPathXmlApplicationContext("application.xml");
 
 		SysUser sysUser = (SysUser) ac.getBean("sysUser");
 		System.out.println(sysUser.getUsername());
