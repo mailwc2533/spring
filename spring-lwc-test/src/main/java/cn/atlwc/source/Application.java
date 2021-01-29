@@ -13,7 +13,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Application {
 
 	public static void main(String[] args) {
-		ApplicationContext ac = new ClassPathXmlApplicationContext("application.xml");
+//		ApplicationContext ac = new ClassPathXmlApplicationContext("application.xml");
+		ApplicationContext ac = new AnnotationConfigApplicationContext("cn.atlwc.source");
 
 		SysUser sysUser = (SysUser) ac.getBean("sysUser");
 		System.out.println(sysUser.getUsername());

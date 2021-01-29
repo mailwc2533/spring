@@ -88,6 +88,8 @@ final class PostProcessorRegistrationDelegate {
 			}
 			sortPostProcessors(currentRegistryProcessors, beanFactory);
 			registryProcessors.addAll(currentRegistryProcessors);
+			// ConfigurationClassPostProcessor 处理带有@Configuration 注解的类（将@Bean的方法构建成 BeanMethod）
+			// 同时解析bean 中的 @Import、@Component、ImportResource、@ComponentScan注解，并且实例化对应的实例，同时加入beanFactory
 			invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry);
 			currentRegistryProcessors.clear();
 
